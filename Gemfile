@@ -39,5 +39,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'faker'
-
+gem 'bootstrap-sass', '~> 3.1.1'
+gem 'simple_form'
 
