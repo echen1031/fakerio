@@ -29,6 +29,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'launchy'
+  gem 'httparty'
 end
 
 gem 'sass-rails', '~> 4.0.3'
