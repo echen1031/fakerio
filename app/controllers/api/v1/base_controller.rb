@@ -9,7 +9,10 @@ class Api::V1::BaseController < ApplicationController
   
   def authenticate_user_from_token!
     user_uuid  = params[:uuid].presence
-    user       = user_uuid && User.where(uuid: user_uuid).first
+    #user       = user_uuid && User.where(uuid: user_uuid).first
+
+    user = User.find_by_uuid(user_uuid) # if the uuid is not there, user will be nil
+
  
     # Notice how we use Devise.secure_compare to compare the token
     # in the database with the token given in the params, mitigating
