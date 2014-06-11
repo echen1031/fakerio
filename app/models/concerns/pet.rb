@@ -1,7 +1,9 @@
 class Pet
-  attr_accessor :name, :creature
+  attr_accessor :name, :kind, :age
 
   def initialize
-    self.creature = Faker::Team.creature.singularize
+    self.name  = Faker::Name.first_name
+    self.kind = Faker::Team.creature.singularize
+    self.age = rand(14) + 1
   end
 end
