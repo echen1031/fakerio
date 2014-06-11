@@ -1,6 +1,6 @@
 class Person
 
-  attr_accessor :email, :name, :ip_address, :bio, :avatar, :phone, :credit_card, :company, :pet
+  attr_accessor :email, :name, :ip_address, :bio, :avatar, :phone, :credit_card, :company, :pet, :product
 
   def initialize(has_company = false, has_pet = false)
     self.email = Faker::Internet.email

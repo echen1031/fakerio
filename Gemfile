@@ -30,6 +30,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'launchy'
   gem 'httparty'
+  gem 'simplecov'
 end
 
 gem 'sass-rails', '~> 4.0.3'
