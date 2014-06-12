@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   end
   resources :purchases, only: [:new, :create]
   devise_for :users
-
+  resources :dashboard, only: [:index]
   root :to => "home#index"
 end

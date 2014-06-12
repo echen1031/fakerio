@@ -21,7 +21,7 @@ class PurchasesController < ApplicationController
     flash[:notice] = "Thanks for your payment, #{current_user.email}!"
 
 
-    redirect_to root_path
+    redirect_to dashboard_index_path
     
     #Stripe will send back CardErrors, with friendly messages
     #when somethin goes wrong.
