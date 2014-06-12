@@ -1,9 +1,9 @@
-class Api::V1::ProductController < Api::V1::BaseController
+class Api::V1::PetsController < Api::V1::BaseController
   def index
     count = (params[:count] || 1).to_i
-    product = []
+    pet = []
     count.times do
-      product << Product.new
+      pet << Pet.new
     end
 
     respond_with(product)

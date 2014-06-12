@@ -1,4 +1,4 @@
-class Api::V1::CompanyController < Api::V1::BaseController
+class Api::V1::CompaniesController < Api::V1::BaseController
   def index
     count = (params[:count] || 1).to_i
     has_product = params[:with_product].present?
