@@ -2,7 +2,8 @@
 
   /The form doesn't pass the amount to the create action,
   /so we have to pass it manually.
-  = hidden_field_tag :amount, @stripe_btn_hash[:data][:amount]
-
-  %h4 Click the button!
-  %script{ @stripe_btn_hash }
+  .controls
+    %label Enter the amount you wish to charge your account with
+    = text_field_tag :amount, @stripe_btn_hash[:data][:amount]
+  .controls
+    %script{ @stripe_btn_hash }

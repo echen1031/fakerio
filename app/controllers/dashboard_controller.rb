@@ -1,6 +1,9 @@
-class DashboardController < PurchasesController
+class DashboardController < ApplicationController
+
+  before_filter :authenticate_user!
+
   def index
-    @amount = params[:amount]
+    
   end
 end
 

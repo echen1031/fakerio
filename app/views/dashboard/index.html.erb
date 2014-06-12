@@ -2,10 +2,15 @@
   <h1>Dashboard</h1>
 </div>
 
-<div class="col-md-8">
-  <ul class="list-group">
-    <li class="list-group-items">
-    <%= @amount %>
-    </li>
-  </ul>
+<div class="row">
+  <div class="well">
+    <div class="col-md-8">
+      <strong>Your remaining credits:</strong>
+    </div>
+    <div class="col-md-4">
+      <%= link_to "Buy More", new_purchase_url, class: "btn btn-lg btn-success pull-right" %>
+      <%= number_to_currency(current_user.credits) %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
 </div>
