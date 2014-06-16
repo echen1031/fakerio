@@ -46,4 +46,5 @@ gem 'simple_form'
 gem 'stripe'
 gem 'haml'
 gem 'haml-rails'
+gem 'redis'
 
