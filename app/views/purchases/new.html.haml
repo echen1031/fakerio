@@ -1,0 +1,9 @@
+= form_tag purchases_path do
+
+  /The form doesn't pass the amount to the create action,
+  /so we have to pass it manually.
+  .controls
+    %label Enter the amount you wish to charge your account with
+    = text_field_tag :amount, @stripe_btn_hash[:data][:amount]
+  .controls
+    %script{ @stripe_btn_hash }

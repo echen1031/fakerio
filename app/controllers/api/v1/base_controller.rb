@@ -5,6 +5,19 @@ class Api::V1::BaseController < ApplicationController
   before_filter :authenticate_user_from_token!
   before_filter :authenticate_user!
   
+  around_filter :protect_api_methods
+
+  def protect_api_methods
+    if current_user.credits <= 0
+      respond_with({error: "You are out of credits, please purchase more."}, status: :payment_required)
+    else
+      yield
+      current_user.credits_in_cents -= 1
+      current_user.save
+      response.headers["X-FAKER-IO-CREDITS-REMAINING"] = current_user.credits_in_cents.to_s
+    end
+  end
+
   private
   
   def authenticate_user_from_token!

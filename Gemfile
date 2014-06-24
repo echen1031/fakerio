@@ -44,4 +44,7 @@ gem 'faker'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'simple_form'
 gem 'stripe'
+gem 'haml'
+gem 'haml-rails'
+gem 'redis'
 

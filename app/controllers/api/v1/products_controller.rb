@@ -1,4 +1,4 @@
-class Api::V1::ProductController < Api::V1::BaseController
+class Api::V1::ProductsController < Api::V1::BaseController
   def index
     count = (params[:count] || 1).to_i
     products = []

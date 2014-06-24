@@ -12,7 +12,11 @@ class User < ActiveRecord::Base
       self.authentication_token = generate_authentication_token
     end
   end
- 
+
+  def credits
+    self.credits_in_cents.to_f / 100.0
+  end
+
   private
     
   def generate_uuid
