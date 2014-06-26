@@ -4,28 +4,35 @@ class RateLimit
   end
 
   def call(env)
-    client_ip = env["REMOTE_ADDR"]
-    key = "count:#{client_ip}"
-    count = REDIS.get(key)
-    unless count
-      REDIS.set(key, 0)
-      REDIS.expire(key, THROTTLE_TIME_WINDOW)
-    end
+    puts env.inspect
 
-    if count.to_i >= THROTTLE_MAX_REQUESTS
-      [
-        429,
-        rate_limit_headers(count, key),
-        [message]
-      ]
+    if env["PATH_INFO"].match('api')
+
+      client_ip = env["REMOTE_ADDR"]
+      key = "count:#{client_ip}"
+      count = REDIS.get(key)
+      unless count
+        REDIS.set(key, 0)
+        REDIS.expire(key, THROTTLE_TIME_WINDOW)
+      end
+
+      if count.to_i >= THROTTLE_MAX_REQUESTS
+        [
+          429,
+          rate_limit_headers(count, key),
+          [message]
+        ]
+      else
+        REDIS.incr(key)
+        status, headers, body = @app.call(env)
+        [
+          status,
+          headers.merge(rate_limit_headers(count.to_i + 1, key)),
+          body
+        ]
+      end
     else
-      REDIS.incr(key)
-      status, headers, body = @app.call(env)
-      [
-        status,
-        headers.merge(rate_limit_headers(count.to_i + 1, key)),
-        body
-      ]
+      @app.call(env)
     end
   end
 
