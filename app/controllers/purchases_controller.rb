@@ -24,7 +24,7 @@ class PurchasesController < ApplicationController
     current_user.credits_in_cents = current_user.credits_in_cents + @amount
     current_user.save
     
-    redirect_to dashboards_index_path
+    redirect_to user_dashboard_path
     
     #Stripe will send back CardErrors, with friendly messages
     #when somethin goes wrong.
